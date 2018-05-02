@@ -1,5 +1,5 @@
 
-# singlesubject\_debg
+# singlesubject\_debug
 
 There is a persistent and evasive bug in the single-subject model code.  This
 repo is an attempt to root out the issue.
