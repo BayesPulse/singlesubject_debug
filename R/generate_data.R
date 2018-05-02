@@ -29,7 +29,7 @@ plot(one_noisy_series)
 
 
 lapply(1:3, function(x) {
-  write_delim(three_clean_series[[x]]$data %>% select(time, concentration), 
+  write_delim(three_clean_series[[x]]$data, #%>% select(time, concentration), 
               path = paste0("./data/clean_series_", x, ".dat"),
               delim = " ", col_names = FALSE)
 })
@@ -41,7 +41,7 @@ lapply(1:3, function(x) {
 
 
 lapply(1, function(x) {
-  write_delim(one_noisy_series$data %>% select(time, concentration), 
+  write_delim(one_noisy_series$data, #%>% select(time, concentration), 
               path = paste0("./data/noisy_series_", x, ".dat"),
               delim = " ", col_names = FALSE)
 })

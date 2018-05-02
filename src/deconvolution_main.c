@@ -190,6 +190,7 @@ int main(int argc, char *argv[]) {
     printf("%lf %lf\n", propvar[2], propvar[3]);
     printf("%lf %lf %lf\n\n\n", propvar[4], propvar[5], propvar[6]);
 
+
     /*}}}*/
 
 
@@ -198,6 +199,15 @@ int main(int argc, char *argv[]) {
     // -------------------------------------------
     N   = (int *)calloc(1, sizeof(int));
     ts  = read_data_file(datafile, N);
+
+    // Print first 5 records of data
+    printf("First 5 rows of dataset:\n");
+    printf("Time; Conc\n");
+    printf("%f; %f \n", ts[0][0], ts[0][1]);
+    printf("%f; %f \n", ts[1][0], ts[1][1]);
+    printf("%f; %f \n", ts[2][0], ts[2][1]);
+    printf("%f; %f \n", ts[3][0], ts[3][1]);
+    printf("%f; %f \n", ts[4][0], ts[4][1]);
 
 
     // -------------------------------------------
@@ -279,47 +289,47 @@ int main(int argc, char *argv[]) {
     parms->decay    = log(2) / parms->md[1]; // calculate decay rate from halflife
 
     // Initialize pulse values -------------------
-    list = initialize_node();
-    mass[0] = 12.32657558;
-    mass[1] = 8.335093817;
-    mass[2] = 6.169354435;
-    mass[3] = 17.80691618;
-    mass[4] = 17.81203064;
-    mass[5] = 4.180821883;
-    mass[6] = 9.385968508;
-    mass[7] = 3.539176735;
-    mass[8] = 8.860152668;
-    width[0] = 26.02652032;
-    width[1] = 37.383667;
-    width[2] = 37.90962662;
-    width[3] = 31.45537546;
-    width[4] = 52.64992824;
-    width[5] = 42.00314896;
-    width[6] = 11.7825812;
-    width[7] = 21.11221475;
-    width[8] = 100.6173752;
-    time[0] = 139.2555248;
-    time[1] = 293.9643442;
-    time[2] = 400.3647507;
-    time[3] = 654.7396597;
-    time[4] = 788.742805;
-    time[5] = 918.9406528;
-    time[6] = 1156.007127;
-    time[7] = 1335.413248;
-    time[8] = 1408.372033;
+    //list = initialize_node();
+    //mass[0] = 12.32657558;
+    //mass[1] = 8.335093817;
+    //mass[2] = 6.169354435;
+    //mass[3] = 17.80691618;
+    //mass[4] = 17.81203064;
+    //mass[5] = 4.180821883;
+    //mass[6] = 9.385968508;
+    //mass[7] = 3.539176735;
+    //mass[8] = 8.860152668;
+    //width[0] = 26.02652032;
+    //width[1] = 37.383667;
+    //width[2] = 37.90962662;
+    //width[3] = 31.45537546;
+    //width[4] = 52.64992824;
+    //width[5] = 42.00314896;
+    //width[6] = 11.7825812;
+    //width[7] = 21.11221475;
+    //width[8] = 100.6173752;
+    //time[0] = 139.2555248;
+    //time[1] = 293.9643442;
+    //time[2] = 400.3647507;
+    //time[3] = 654.7396597;
+    //time[4] = 788.742805;
+    //time[5] = 918.9406528;
+    //time[6] = 1156.007127;
+    //time[7] = 1335.413248;
+    //time[8] = 1408.372033;
 
-    // Initialize nodes and insert into linkedlist
-    for (i = 0; i < 9; i++) {
+    //// Initialize nodes and insert into linkedlist
+    //for (i = 0; i < 9; i++) {
 
-      new_node           = initialize_node();
-      new_node->time     = time[i];
-      new_node->theta[0] = mass[i];
-      new_node->theta[1] = width[i];
-      new_node->mean_contrib = (double *)calloc(*N, sizeof(double));
-      mean_contribution(new_node, ts, parms, *N);
-      insert_node(new_node, list);
+    //  new_node           = initialize_node();
+    //  new_node->time     = time[i];
+    //  new_node->theta[0] = mass[i];
+    //  new_node->theta[1] = width[i];
+    //  new_node->mean_contrib = (double *)calloc(*N, sizeof(double));
+    //  mean_contribution(new_node, ts, parms, *N);
+    //  insert_node(new_node, list);
 
-    }
+    //}
 
     /*}}}*/
 
