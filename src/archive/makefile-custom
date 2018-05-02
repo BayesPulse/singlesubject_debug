@@ -1,0 +1,59 @@
+################################################################################
+# Makefile for decon
+################################################################################
+
+TARGET = decon # output filename
+CC     = gcc   # compiler
+
+SRC = deconvolution_main.c \
+	  format_data.c \
+	  linklist_test.c \
+	  hash.c \
+	  randgen.c \
+	  birthdeath_test.c \
+	  cholesky.c \ 
+	  normal.c
+
+OBJ = deconvolution_main.o \
+	  format_data.o \
+	  linklist_test.o hash.o \
+	  randgen.o \
+	  birthdeath_test.o \
+	  cholesky.o \
+	  normal.o
+DEPS = deconvolution_main.h 
+LIBS = -lm
+
+#SRCDIR = src
+#OBJDIR = obj
+#BINDIR = bin
+VPATH = src
+
+
+## Debugging version
+## -pg for gprof
+##  -g for gdb debugging
+##  -Wall for display all warnings
+# CFLAGS = -g -I.
+# decon: $(OBJ)
+# 	gcc  -o decon $(OBJ) $(LIBS) $(CFLAGS) -lprofiler
+# 
+# $(OBJ) : $(SRC)
+# 	gcc -Wall -c  $(SRC) $(CFLAGS) -lprofiler
+
+
+## Production version
+CFLAGS = -O3 -I.
+decon: $(OBJ)
+	gcc -o decon $(OBJ) $(LIBS) $(CFLAGS)
+
+$(OBJ) : $(SRC)
+	gcc -c  $(SRC) $(CFLAGS)
+
+
+## 'make clean' will remove obj files
+.PHONY: clean
+
+clean:
+	rm $(OBJ)
+
