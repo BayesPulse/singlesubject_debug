@@ -5,6 +5,17 @@
 # Author: M.Mulvahill
 # Notes:
 #   - generating 4 series, 3 clean and 1 noisy
+# 
+#   - Other than changing mass_mean to 1.25 and mass_sd to 0.5 in the noisy
+#   series, the values for simulation are defaults:
+#   baseline              = 2.6
+#   mean pulse mass       = 3.5
+#   SD/var of pulse mass  = 1.6 (sd)
+#   mean pulse width      = 5
+#   SD/var of pulse width = 1 (sd)
+#   half-life             = 45
+#   model error           = 0.005
+# 
 #-------------------------------------------------------------------------------
 
 setwd("~/Projects/BayesPulse/Software/singlesubject_debug")
