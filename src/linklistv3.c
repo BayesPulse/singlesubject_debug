@@ -89,8 +89,8 @@ void mcmc(Node_type *list,
   int	l;               // Generic counter
   int	num_node;        // Counter of num_node for loops
   int	num_node2;       // Number of pulses
-  int	NN = 50;         // Output ever NNth iteration to files
-  int	NNN = 5000;      // Output ever NNth iteration to STDOUT
+  int	NN = 1;         // Output ever NNth iteration to files
+  int	NNN = 1;      // Output ever NNth iteration to STDOUT
   double vrem;         // Proposal variance for RE masses
   double vrew;         // Proposal variance for RE widths
   double vmv;          // Proposal variance for SD of RE masses
@@ -178,7 +178,7 @@ void mcmc(Node_type *list,
 
     // 1) Draw the fixed effects   
     //    (Gibbs sampler)
-    draw_fixed_effects(list, priors, parms, seed); 
+    //draw_fixed_effects(list, priors, parms, seed);
 
     // 2) Draw standard deviation of random effects 
     //    (Metropolis Hastings)
@@ -186,35 +186,32 @@ void mcmc(Node_type *list,
     //------ DEBUGGING ------//
     //printf("\n\n\nIteration %d\n", i);
     //------ DEBUGGING ------//
-    draw_re_sd(list, priors, parms, vmv, vwv, seed);
+   // draw_re_sd(list, priors, parms, vmv, vwv, seed);
 
     // 3) Draw the random effects 
     //    (Metropolis Hastings)
-    draw_random_effects(ts, list, parms, N, likeli, vrem, vrew, seed);
+   // draw_random_effects(ts, list, parms, N, likeli, vrem, vrew, seed);
 
     // 4) Draw the pulse locations 
     //    (Metropolis Hastings)
-    if (priors->gamma < -0.001) {
-      mh_time_os(list, parms, ts, likeli, N, seed, vt); 
-    } else {
-      mh_time_strauss(list, parms, ts, likeli, N, seed, vt, priors);
-    }
+   // if (priors->gamma < -0.001) {
+   //   mh_time_os(list, parms, ts, likeli, N, seed, vt);
+   // } else {
+   //   mh_time_strauss(list, parms, ts, likeli, N, seed, vt, priors);
+   // }
 
     // 5) Draw baseline and halflife
     //    (Metropolis-Hastings)
-    mh_mu_delta(list, parms, priors, ts, likeli, N, num_node2, seed,
-                pmd_vch);
+   // mh_mu_delta(list, parms, priors, ts, likeli, N, num_node2, seed,pmd_vch);
 
     // 6) Draw the model error variance from the inverse Gamma distribution 
     //    (Gibbs) 
     //    Modeling variance NOT precision; precision would be a gamma
     //    distribution via Ken's derivation.  Looked at Week7 of Ed's notes, but
     //    didn't find a clear answer.
-    ssq           = error_squared(ts, list, parms, N);
-    parms->sigma  = inverse_gamma(priors->alpha + N / 2, 
-                                  priors->beta + 0.5 * ssq, 
-                                  seed);
-    parms->lsigma = log(parms->sigma);
+   // ssq           = error_squared(ts, list, parms, N);
+   // parms->sigma  = inverse_gamma(priors->alpha + N / 2,priors->beta + 0.5 * ssq, seed);
+   // parms->lsigma = log(parms->sigma);
 
     //------------------------------------------------------
     // End MCMC steps
