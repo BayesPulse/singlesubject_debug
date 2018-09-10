@@ -11,8 +11,8 @@
 #   baseline              = 2.6
 #   mean pulse mass       = 3.5
 #   SD/var of pulse mass  = 1.6 (sd)
-#   mean pulse width      = 5
-#   SD/var of pulse width = 1 (sd)
+#   mean pulse width      = 40
+#   SD/var of pulse width = 20 (sd)
 #   half-life             = 45
 #   model error           = 0.005
 # 
